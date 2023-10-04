@@ -3,7 +3,7 @@ const express = require('express')
 const { readFile} = require('fs')
 
 const app = express()
-console.log(process.env.API_TOKEN)
+
 app.get('/', (request, response) => {
     readFile('./home.html', 'utf8', (err, html) => {
         if(err) {
