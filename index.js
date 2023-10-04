@@ -1,16 +1,19 @@
-require("dotenv").config()
 const express = require('express')
+
 const app = express()
-const { readFile} = require('fs').promises
+const PORT = 4000
 
+app.listen(PORT, () => {
+  console.log(`API listening on PORT ${PORT} `)
+})
 
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
 
-app.get('/', async (request, response) => {
+app.get('/about', (req, res) => {
+  res.send('This is my about route..... ')
+})
 
-    response.send( await readFile('./home.html', 'utf8') );
-
-});
-
-app.listen(process.env.PORT || 3000, () => console.log(`App available on http://localhost:3000`))
-
+// Export the Express API
 module.exports = app
